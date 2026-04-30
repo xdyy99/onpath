@@ -2,7 +2,13 @@ import { useEffect, useRef, useState } from 'react'
 import { SOCIAL_LINKS } from '../constants/socialLinks'
 import { submitShopifyContactForm } from '../lib/shopifyContactForm'
 
-const CATEGORIES = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5']
+const CATEGORIES = [
+  'Order/returns',
+  'General inquiries',
+  'Press & collaboration',
+  'Wholesale & business',
+  'Careers',
+]
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const PHONE_REGEX = /^[\d+\-\s()]{6,}$/
