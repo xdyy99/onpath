@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { SOCIAL_LINKS } from '../constants/socialLinks'
 import Subscription from './Subscription'
 
 const Footer = () => {
@@ -29,36 +30,13 @@ const Footer = () => {
             <div className="footer-row-item --desktop">
               <div className="footer-row-title --right">Social</div>
               <ul className="footer-row-social">
-                <li>
-                  <a href="#">
-                    <img src="/icons/sc-tiktok.svg" alt="TikTok" />
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <img src="/icons/sc-ins.svg" alt="Instagram" />
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <img src="/icons/sc-yt.svg" alt="YouTube" />
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <img src="/icons/sc-x.svg" alt="YouTube" />
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <img src="/icons/sc-pin.svg" alt="Pinterest" />
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <img src="/icons/sc-thread.svg" alt="Threads" />
-                  </a>
-                </li>
+                {SOCIAL_LINKS.map(({ href, icon, label }) => (
+                  <li key={label}>
+                    <a href={href} target="_blank" rel="noopener noreferrer">
+                      <img src={icon} alt={label} />
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -91,36 +69,13 @@ const Footer = () => {
             <div className="footer-row-item">
               <div className="footer-row-title">Social</div>
               <ul className="footer-row-social">
-                <li>
-                  <a href="#">
-                    <img src="/icons/sc-tiktok.svg" alt="TikTok" />
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <img src="/icons/sc-ins.svg" alt="Instagram" />
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <img src="/icons/sc-yt.svg" alt="YouTube" />
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <img src="/icons/sc-x.svg" alt="YouTube" />
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <img src="/icons/sc-pin.svg" alt="Pinterest" />
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <img src="/icons/sc-thread.svg" alt="Threads" />
-                  </a>
-                </li>
+                {SOCIAL_LINKS.map(({ href, icon, label }) => (
+                  <li key={label}>
+                    <a href={href} target="_blank" rel="noopener noreferrer">
+                      <img src={icon} alt={label} />
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
             <div className="footer-row-item ">

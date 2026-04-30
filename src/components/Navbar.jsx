@@ -2,6 +2,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
+import { SOCIAL_LINKS } from '../constants/socialLinks'
 
 const NAVBAR_HEIGHT = 100
 
@@ -188,36 +189,13 @@ const Navbar = () => {
           <div className="contact-footer">
             <div className="contact-footer-title">Follow us</div>
             <ul className="contact-social">
-              <li>
-                <a href="#">
-                  <img src="/icons/sc-tiktok.svg" alt="TikTok" />
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/icons/sc-ins.svg" alt="Instagram" />
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/icons/sc-yt.svg" alt="YouTube" />
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/icons/sc-x.svg" alt="YouTube" />
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/icons/sc-pin.svg" alt="Pinterest" />
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/icons/sc-thread.svg" alt="Threads" />
-                </a>
-              </li>
+              {SOCIAL_LINKS.map(({ href, icon, label }) => (
+                <li key={label}>
+                  <a href={href} target="_blank" rel="noopener noreferrer">
+                    <img src={icon} alt={label} />
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
