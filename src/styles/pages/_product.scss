@@ -220,6 +220,7 @@
     }
     &-header {
       width: 100%;
+      min-width: unset;
       &-inner {
         display: flex;
         align-items: end;
@@ -285,6 +286,7 @@
     }
     &-content {
       width: 100%;
+      min-width: unset;
       &-inner {
         padding-top: 0;
       }
@@ -304,7 +306,7 @@
     &-gallery {
       &-inner {
         padding: 24px 0;
-        gap: 0;
+        gap: 4px;
       }
     }
   }

@@ -210,11 +210,11 @@
 @media only screen and (max-width: 480px) {
   .shop {
     &-grid {
-      column-gap: 0;
+      column-gap: 4px;
       margin: 0 -24px;
     }
     &-item {
-      width: 50%;
+      width: calc(50% - 2px);
       .image {
         margin-bottom: 8px;
       }
