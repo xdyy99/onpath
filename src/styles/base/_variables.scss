@@ -1,0 +1,51 @@
+// Colors
+$primary-color: #202020;
+$secondary-color: #86868b;
+$accent-color: #e53671;
+$background-color: #ffffff;
+$text-color: #1d1d1f;
+
+$black: #202020;
+$white: #f5f3f5;
+$yellow: #ec9616;
+$orange: #e86c2f;
+$pink: #e53671;
+$purple: #a80064;
+
+// Breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+// Container
+$container-max-width: 1200px;
+
+// Spacing
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 1.5rem;
+$spacing-lg: 2rem;
+$spacing-xl: 3rem;
+$spacing-xxl: 4rem;
+
+// Border Radius
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+$border-radius-xl: 20px;
+
+// Shadows
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
+
+// Transitions
+$transition-base: all 0.3s ease;
+$transition-slow: all 0.5s ease;
+
+// Fonts
+$font-body: 'Founders Grotesk', sans-serif;
+$font-heading: 'PP Eiko', sans-serif;
+$font-brush: 'Brushwell', cursive;
+$font-vogue: 'Vogue', serif;

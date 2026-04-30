@@ -1,0 +1,45 @@
+@font-face {
+    font-family: 'Arquitecta';
+    src: url('Arquitecta-Light.woff2') format('woff2'),
+        url('Arquitecta-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Arquitecta';
+    src: url('Arquitecta-Bold.woff2') format('woff2'),
+        url('Arquitecta-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Arquitecta';
+    src: url('Arquitecta-Medium.woff2') format('woff2'),
+        url('Arquitecta-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Arquitecta';
+    src: url('Arquitecta-Regular.woff2') format('woff2'),
+        url('Arquitecta-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Arquitecta';
+    src: url('Arquitecta-SemiBold.woff2') format('woff2'),
+        url('Arquitecta-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+

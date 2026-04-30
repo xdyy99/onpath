@@ -1,0 +1,143 @@
+@use 'sass:color';
+@use '../base/variables' as *;
+
+@keyframes subscription-form-spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.subscription {
+  width: 100%;
+  &-title {
+    font-family: $font-heading;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-bottom: 24px;
+  }
+  &-description {
+    font-size: 16px;
+    font-family: $font-body;
+    font-weight: 400;
+  }
+  &-form {
+    &__row {
+      position: relative;
+    }
+    input {
+      width: 100%;
+      color: $white;
+      background-color: transparent;
+      transition: $transition-base;
+      height: 48px;
+      padding-right: 48px;
+      border-bottom: 1px solid #8f8f8f;
+
+      &:-webkit-autofill,
+      &:-webkit-autofill:hover,
+      &:-webkit-autofill:focus,
+      &:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+        -webkit-text-fill-color: $white !important;
+        caret-color: $white;
+        font-family: $font-body;
+        transition: background-color 9999s ease-in-out 0s;
+      }
+
+      &::placeholder {
+        color: #8f8f8f;
+      }
+      &:focus {
+        border-bottom: 1px solid $white;
+      }
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
+    &__submit {
+      position: absolute;
+      z-index: 2;
+      right: 0;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      cursor: pointer;
+
+      img {
+        width: 24px;
+        height: 24px;
+        object-fit: contain;
+        opacity: 0.5;
+        transition: $transition-base;
+      }
+      &:hover:not(:disabled) {
+        img {
+          opacity: 1;
+        }
+      }
+
+      &:disabled:not(.--loading) {
+        opacity: 0.45;
+        cursor: not-allowed;
+      }
+
+      &.--loading:disabled {
+        opacity: 1;
+        cursor: wait;
+      }
+
+      .subscription-form__spinner {
+        display: inline-flex;
+        line-height: 0;
+
+        img {
+          display: block;
+          width: 24px;
+          height: 24px;
+          opacity: 1;
+        }
+      }
+
+      &.--loading .subscription-form__spinner {
+        animation: subscription-form-spinner 0.75s linear infinite;
+      }
+
+      &.--loading:hover img {
+        transform: none;
+      }
+    }
+    &-feedback {
+      margin: 12px 0 0;
+      padding: 0;
+      font-size: 14px;
+      line-height: 1.4;
+      font-family: $font-body;
+      &--success {
+        color: #a8d5a8;
+      }
+      &--error {
+        color: #ffb4b4;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .subscription {
+    &-title {
+      margin-bottom: 16px;
+    }
+    &-form {
+      input {
+        font-size: 16px;
+      }
+    }
+  }
+}

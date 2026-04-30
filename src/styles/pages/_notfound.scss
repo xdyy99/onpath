@@ -1,0 +1,33 @@
+@use 'sass:color';
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.notfound {
+  &-wrapper {
+    padding: 0 64px;
+    margin-bottom: 200px;
+  }
+  &-title {
+    @include font-size(180, 32);
+    margin-bottom: 64px;
+  }
+  &-text {
+    text-align: center;
+    .btn {
+      margin: 0 auto;
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .notfound {
+    &-wrapper {
+      padding: 0 24px;
+    }
+    &-title {
+      margin-bottom: 32px;
+    }
+  }
+}
+@media only screen and (max-width: 480px) {
+}

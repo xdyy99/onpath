@@ -1,0 +1,311 @@
+@use '../base/variables' as *;
+
+.product {
+  margin-bottom: 200px;
+  &-wrapper {
+    padding: 0 64px;
+    display: flex;
+    align-items: start;
+    gap: 24px;
+    justify-content: space-between;
+  }
+  &-header {
+    width: calc(100% * 3 / 12);
+    min-width: 400px;
+
+    &-inner {
+      padding-top: 25vh;
+    }
+  }
+  &-title {
+    font-size: 48px;
+    color: $purple;
+    margin-bottom: 16px;
+  }
+  &-price {
+    font-size: 16px;
+    color: #8d8d8d;
+    line-height: 1;
+    margin-bottom: 64px;
+  }
+  &-buttons {
+    display: flex;
+    gap: 16px;
+    .btn-icon {
+      border: 1px solid $black;
+      background-color: transparent;
+      transition: $transition-base;
+      img {
+        filter: brightness(0);
+        transition: $transition-base;
+      }
+      &:hover {
+        background-color: $black;
+        img {
+          filter: brightness(1);
+        }
+      }
+    }
+    &.--mobile {
+      display: none;
+    }
+  }
+  &-gallery {
+    width: calc(100% * 5 / 12);
+    &-item {
+      background-color: #eee;
+      width: 100%;
+      img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 733 / 977;
+        object-fit: cover;
+      }
+    }
+  }
+  &-content {
+    width: calc(100% * 3 / 12);
+    min-width: 400px;
+    &-inner {
+      padding-top: 25vh;
+    }
+
+    &-item {
+      margin-bottom: 32px;
+      &.--active {
+        .icon .line:last-child {
+          opacity: 0;
+        }
+
+        .content {
+          display: block;
+        }
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+      .title {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        cursor: pointer;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+      .icon {
+        position: relative;
+        width: 16px;
+        height: 16px;
+        .line {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 16px;
+          height: 1.5px;
+          background-color: $black;
+          &:last-child {
+            transform: translate(-50%, -50%) rotate(90deg);
+          }
+        }
+      }
+      .chart {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+
+        .line {
+          position: relative;
+          width: 200px;
+          height: 1px;
+          background-color: rgba(141, 141, 141, 0.5);
+        }
+        .marker {
+          position: absolute;
+          top: 50%;
+          left: 20%;
+          transform: translate(-50%, -50%);
+          width: 2px;
+          height: 10px;
+          background-color: $black;
+          z-index: 2;
+        }
+      }
+      .content {
+        font-size: 20px;
+        display: none;
+        color: #8d8d8d;
+        > p,
+        > div {
+          margin-bottom: 16px;
+        }
+
+        .product-html {
+          p,
+          ul,
+          ol {
+            margin-bottom: 16px;
+          }
+          & > :last-child {
+            margin-bottom: 0;
+          }
+        }
+
+        li {
+          list-style: none;
+          padding-left: 24px;
+          position: relative;
+          line-height: 1.2;
+          margin-bottom: 8px;
+          &:last-child {
+            margin-bottom: 0;
+          }
+          &::before {
+            content: '';
+            position: absolute;
+            left: 11px;
+            top: 11px;
+            width: 2px;
+            height: 2px;
+            background-color: $black;
+          }
+        }
+      }
+      .options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px 24px;
+      }
+      .option {
+        text-transform: uppercase;
+
+        cursor: pointer;
+        transition: $transition-base;
+        position: relative;
+        &::after {
+          content: '';
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          height: 1px;
+          background-color: #8d8d8d;
+          transform: scaleX(0);
+          transition: $transition-base;
+          transform-origin: left;
+        }
+        &.--active {
+          color: $black;
+          &::after {
+            transform: scaleX(1);
+            background-color: $black;
+          }
+        }
+        &:hover {
+          &::after {
+            transform: scaleX(1);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .product {
+    &-wrapper {
+      padding: 0 24px;
+      flex-direction: column;
+      gap: 12px;
+    }
+    &-header {
+      width: 100%;
+      &-inner {
+        display: flex;
+        align-items: end;
+        padding-top: 0;
+      }
+    }
+    &-title {
+      margin-bottom: 0;
+      width: 100%;
+      font-size: 48px;
+      padding-right: 24px;
+    }
+    &-price {
+      min-width: max-content;
+      font-size: 14px;
+      margin-bottom: 0;
+    }
+    &-buttons {
+      &.--desktop {
+        display: none;
+      }
+      &.--mobile {
+        display: flex;
+      }
+      align-items: center;
+      gap: 8px;
+      .btn-icon {
+        width: 48px;
+        height: 48px;
+        border: 1px solid $black;
+        background-color: transparent;
+        transition: $transition-base;
+        img {
+          width: 16px;
+          filter: brightness(0);
+          transition: $transition-base;
+        }
+        &:hover {
+          background-color: $black;
+          img {
+            filter: brightness(1);
+          }
+        }
+      }
+    }
+    &-gallery {
+      margin-left: -24px;
+      width: calc(100% + 48px);
+      overflow-y: auto;
+      &-inner {
+        padding: 24px;
+        gap: 24px;
+        display: flex;
+        width: max-content;
+      }
+      &-item {
+        max-width: 480px;
+        width: calc(100vw - 48px);
+        img {
+          aspect-ratio: 480 / 640;
+        }
+      }
+    }
+    &-content {
+      width: 100%;
+      &-inner {
+        padding-top: 0;
+      }
+      .content {
+        font-size: 16px;
+      }
+      .options {
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .product {
+    &-gallery {
+      &-inner {
+        padding: 24px 0;
+        gap: 0;
+      }
+    }
+  }
+}

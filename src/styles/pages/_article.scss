@@ -1,0 +1,369 @@
+@use 'sass:color';
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.article {
+  &-wrapper {
+    padding: 0 64px 200px;
+  }
+  &-title {
+    @include font-size(96, 48);
+    width: calc(100% * 9 / 12);
+    font-weight: 300;
+    font-family: $font-heading;
+    text-transform: uppercase;
+    margin-bottom: 64px;
+  }
+  &-legal,
+  &-content {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.5;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-weight: 400;
+      line-height: 1.2;
+      text-transform: uppercase;
+      font-family: $font-heading;
+      margin-top: 40px;
+      margin-bottom: 24px;
+      scroll-margin-top: 110px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    h1 {
+      font-size: 36px;
+    }
+    h2 {
+      font-size: 32px;
+    }
+    h3 {
+      font-size: 28px;
+    }
+    h4 {
+      font-size: 24px;
+    }
+    p {
+      margin-bottom: 24px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    a {
+      color: $black;
+      text-underline-offset: 4px;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    li {
+      list-style: none;
+      padding-left: 24px;
+      position: relative;
+      text-align: left;
+      margin-bottom: 8px;
+      &::before {
+        content: '';
+        position: absolute;
+        left: 10px;
+        top: 0.65em;
+        width: 4px;
+        height: 4px;
+        background-color: $black;
+        border-radius: 50%;
+      }
+    }
+
+    .article-table {
+      margin: 0 0 24px;
+      overflow-x: auto;
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 18px;
+        line-height: 1.4;
+
+        th,
+        td {
+          padding: 12px 16px;
+          text-align: left;
+          border-bottom: 1px solid rgba($black, 0.15);
+          vertical-align: top;
+        }
+        th {
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
+          font-size: 14px;
+          border-bottom: 1px solid $black;
+        }
+        tbody tr:last-child td {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+  &-legal {
+    width: calc(100% * 7 / 12);
+    margin-left: auto;
+    margin-right: 128px;
+  }
+
+  &-banner {
+    width: 100vw;
+    margin: 0 -64px 128px;
+
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+  &-description {
+    width: calc(100% * 5 / 12);
+    margin-bottom: 128px;
+
+    &.--center {
+      text-align: center;
+      margin: 0 auto 128px;
+    }
+  }
+  &-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:last-child {
+      margin-bottom: 128px;
+    }
+
+    &-image {
+      width: calc(100% * 5 / 12);
+      margin: 0 auto;
+      img {
+        background-color: #eee;
+        width: 100%;
+      }
+    }
+    &.--reverse {
+      flex-direction: row-reverse;
+    }
+    &-gap {
+      width: calc(100% * 1 / 12);
+    }
+  }
+  &-image {
+    display: block;
+    img {
+      background-color: #eee;
+      width: 100%;
+    }
+    &.--med {
+      width: calc(100% * 8 / 12);
+    }
+    &.--center {
+      margin: 0 auto 128px;
+    }
+  }
+
+  &-related {
+    display: flex;
+    align-items: start;
+    &-item {
+      width: calc(100% * 5 / 12);
+      .image {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        margin-bottom: 24px;
+        > img {
+          background-color: #eee;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          aspect-ratio: 773 / 410;
+        }
+      }
+      &.--prev {
+        margin-right: auto;
+      }
+      &.--next {
+        margin-left: auto;
+      }
+      .title {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.2;
+        text-transform: uppercase;
+        text-align: center;
+        font-family: $font-heading;
+        margin-bottom: 24px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+      .btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 2;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .article {
+    &-wrapper {
+      padding: 0 24px 128px;
+    }
+    &-title {
+      margin-bottom: 32px;
+      width: 100%;
+    }
+    &-banner {
+      margin: 0 -24px;
+    }
+    &-description {
+      width: 100%;
+      max-width: 480px;
+      margin-bottom: 32px;
+      &.--center {
+        margin: 0 auto 32px;
+      }
+    }
+    &-col {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 64px;
+      .article-description {
+        margin-bottom: 0px;
+      }
+      &:last-child {
+        margin-bottom: 64px;
+      }
+      &.--reverse {
+        flex-direction: column;
+      }
+      &-gap {
+        display: none;
+      }
+      &-image {
+        width: 100%;
+        max-width: 480px;
+      }
+    }
+    &-image {
+      width: 100%;
+      max-width: 768px;
+      &.--med {
+        width: 100%;
+        max-width: 768px;
+      }
+      &.--center {
+        margin: 0 auto 32px;
+      }
+    }
+    &-legal,
+    &-content {
+      font-size: 16px;
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin-top: 32px;
+        margin-bottom: 16px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+      h1 {
+        font-size: 32px;
+      }
+      h2 {
+        font-size: 28px;
+      }
+      h3 {
+        font-size: 24px;
+      }
+      h4 {
+        font-size: 20px;
+      }
+      p {
+        margin-bottom: 16px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      li {
+        padding-left: 16px;
+        margin-bottom: 4px;
+        &::before {
+          content: '';
+          position: absolute;
+          left: 5px;
+          top: 0.65em;
+        }
+      }
+
+      .article-table {
+        margin: 0 0 16px;
+
+        table {
+          font-size: 16px;
+
+          th,
+          td {
+            padding: 8px 12px;
+          }
+        }
+      }
+    }
+    &-legal {
+      width: 100%;
+    }
+
+    &-related {
+      gap: 24px;
+      &-item {
+        width: calc((100% - 24px) / 2);
+        &.--next {
+          .title {
+            text-align: right;
+          }
+        }
+
+        .image {
+          margin-bottom: 12px;
+        }
+        .title {
+          font-size: 12px;
+          text-align: left;
+        }
+        .btn {
+          width: 48px;
+          height: 48px;
+          min-width: 48px;
+          img {
+            width: 32px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,234 @@
+@use 'sass:color';
+@use '../base/variables' as *;
+
+.shop {
+  margin-bottom: 200px;
+  &-wrapper {
+    padding: 0 64px;
+  }
+  &-filters {
+    display: flex;
+    justify-content: flex-end;
+    gap: 64px;
+    margin-bottom: 64px;
+
+    &.--mobile {
+      display: none;
+    }
+    &-item {
+      position: relative;
+      &.--open {
+        .list {
+          opacity: 1;
+          pointer-events: auto;
+          transform: translateY(0);
+        }
+        .icon {
+          .line:last-child {
+            opacity: 0;
+          }
+        }
+      }
+      .head {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        cursor: pointer;
+        user-select: none;
+      }
+      .list {
+        // display: none;
+        user-select: none;
+        position: absolute;
+        background-color: #fff;
+        overflow: hidden;
+        padding: 12px 0;
+        border-radius: 12px;
+        top: calc(100% + 12px);
+        right: 0;
+        width: max-content;
+        min-width: 200px;
+        z-index: 100;
+        text-align: right;
+        transform: translateY(10px);
+        opacity: 0;
+        pointer-events: none;
+        transition: $transition-base;
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 100%;
+          left: 0;
+          width: 100%;
+          height: 12px;
+
+          z-index: -1;
+        }
+
+        li {
+          position: relative;
+          padding: 4px 12px;
+          cursor: pointer;
+          text-underline-offset: 4px;
+          &:hover {
+            text-decoration: underline;
+          }
+          &.--active {
+            text-decoration: underline;
+          }
+        }
+      }
+      .name {
+        text-transform: uppercase;
+      }
+      .icon {
+        position: relative;
+        width: 16px;
+        height: 16px;
+        .line {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 16px;
+          height: 1.5px;
+          background-color: $black;
+          &:last-child {
+            transform: translate(-50%, -50%) rotate(90deg);
+          }
+        }
+      }
+    }
+  }
+  &-grid {
+    display: flex;
+    column-gap: 24px;
+    row-gap: 64px;
+    flex-wrap: wrap;
+  }
+  &-item {
+    width: calc((100% - 48px) / 3);
+
+    .image {
+      position: relative;
+      background-color: #eee;
+      width: 100%;
+      margin-bottom: 24px;
+      a {
+        display: block;
+        > img {
+          display: block;
+          width: 100%;
+          aspect-ratio: 582 / 873;
+          object-fit: cover;
+        }
+      }
+    }
+    .buttons {
+      transition: $transition-base;
+      opacity: 0;
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      padding: 12px;
+      z-index: 2;
+      pointer-events: auto;
+    }
+    &:hover {
+      .buttons {
+        opacity: 1;
+      }
+    }
+
+    @media (hover: none) {
+      .buttons {
+        opacity: 1;
+      }
+    }
+
+    .info {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+    }
+    .name {
+      font-size: 24px;
+      text-transform: uppercase;
+      padding-right: 24px;
+      font-weight: 300;
+      font-family: $font-heading;
+      line-height: 1;
+    }
+    .price {
+      min-width: max-content;
+      font-size: 16px;
+      color: #8d8d8d;
+      line-height: 1;
+    }
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .shop {
+    &-wrapper {
+      padding: 0 24px;
+    }
+    &-title {
+      margin-bottom: 16px;
+    }
+    &-filters {
+      gap: 24px;
+      justify-content: flex-start;
+      margin-bottom: 32px;
+      &.--desktop {
+        display: none;
+      }
+      &.--mobile {
+        display: flex;
+      }
+    }
+    &-grid {
+      gap: 24px;
+    }
+    &-item {
+      width: calc((100% - 24px) / 2);
+      .image {
+        margin-bottom: 16px;
+      }
+      .name {
+        font-size: 16px;
+        line-height: 1.2;
+      }
+      .price {
+        font-size: 14px;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 480px) {
+  .shop {
+    &-grid {
+      column-gap: 0;
+      margin: 0 -24px;
+    }
+    &-item {
+      width: 50%;
+      .image {
+        margin-bottom: 8px;
+      }
+      .info {
+        display: block;
+        padding: 0 8px;
+      }
+      .name {
+        padding-right: 0;
+        margin-bottom: 4px;
+      }
+      .price {
+        font-size: 12px;
+      }
+    }
+  }
+}

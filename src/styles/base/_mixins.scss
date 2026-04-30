@@ -1,0 +1,23 @@
+@use 'sass:math';
+
+@mixin hover {
+  @media only screen and (min-width: 1024px) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin font-size($size-max, $size-min) {
+  $scale: math.div($size-max, 19.2) + 0vw;
+  $min: $size-min + 0px;
+  $max: $size-max + 0px;
+
+  font-size: clamp($min, $scale, $max);
+}
+
+@mixin width-scale($width) {
+  $scale: math.div($width, 19.2) + 0vw;
+
+  width: $scale;
+}
