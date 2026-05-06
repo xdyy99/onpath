@@ -1,0 +1,115 @@
+@use 'sass:color';
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.account {
+  &-wrapper {
+    padding: 0 64px 200px;
+  }
+  &-title {
+    @include font-size(96, 48);
+    width: calc(100% * 9 / 12);
+    font-weight: 300;
+    font-family: $font-heading;
+    text-transform: uppercase;
+    margin-bottom: 64px;
+  }
+  &-login {
+    max-width: 540px;
+    margin: 0 auto;
+    .contact-content {
+      margin: 0;
+      padding: 0 0 64px;
+    }
+    .contact-footer {
+      margin-top: 48px;
+    }
+    &--dashboard {
+      max-width: none;
+      margin: 0;
+      width: 100%;
+      .contact-content.contact-content--flush {
+        padding: 0 0 64px;
+        margin: 0;
+      }
+    }
+  }
+  &-toggle {
+    display: block;
+    width: 100%;
+    margin-top: 24px;
+    margin-left: 0 !important;
+    padding: 0;
+    background: transparent;
+    border: none;
+    font-family: $font-body;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: none;
+    text-align: left;
+    color: $black;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    cursor: pointer;
+    transition: $transition-base;
+    &:hover:not(:disabled) {
+      color: color.adjust($black, $lightness: -15%);
+    }
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  &-oauth-copy,
+  &-signed-in-email,
+  &-callback-hint {
+    margin-bottom: 24px;
+    max-width: 42em;
+  }
+
+  &-callback-hint {
+    font-size: 16px;
+    color: #555;
+  }
+
+  &-code {
+    font-size: 0.85em;
+    word-break: break-all;
+    background: #f4f4f4;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  &-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 24px;
+    font-size: 16px;
+    line-height: 1.4;
+    cursor: pointer;
+    input {
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .account {
+    &-wrapper {
+      padding: 0 24px 120px;
+    }
+    &-title {
+      width: 100%;
+      margin-bottom: 32px;
+    }
+    &-login .contact-content {
+      padding-bottom: 48px;
+    }
+    &-toggle {
+      margin: 0 auto;
+    }
+  }
+}

@@ -12,13 +12,15 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Contact from './components/Contact'
 import Bag from './components/Bag'
+import Loader from './components/Loader'
 
 import Home from './pages/Home'
 import Shop from './pages/Shop'
+import Search from './pages/Search'
 import Product from './pages/Product'
 import Blog from './pages/Blog'
 import BlogDetail from './pages/BlogDetail'
-import Login from './pages/Login'
+import Account from './pages/Account'
 import AOL from './pages/AOL'
 import Essence from './pages/Essence'
 // import Premire from './pages/Premiere'
@@ -120,6 +122,7 @@ function App() {
       <Router>
         <ScrollToTop />
         <AnimateSections />
+
         <div className="app">
           <Navbar />
           <Contact />
@@ -129,9 +132,10 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/shop" element={<Shop />} />
+              <Route path="/search" element={<Search />} />
               <Route path="/essence" element={<Essence />} />
               <Route path="/shop/:slug" element={<Product />} />
-              {/* <Route path="/login" element={<Login />} /> */}
+              <Route path="/account" element={<Account />} />
               <Route path="/stories" element={<Blog />} />
               <Route path="/stories/:slug" element={<BlogDetail />} />
               <Route path="/artoflife" element={<AOL />} />
@@ -146,6 +150,8 @@ function App() {
 
           <Footer />
         </div>
+
+        <Loader />
       </Router>
     </Provider>
   )

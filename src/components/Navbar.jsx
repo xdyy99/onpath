@@ -94,19 +94,13 @@ const Navbar = () => {
           </NavLink>
         </div>
         <div className="navbar-buttons">
-          {/* <Link className="navbar-button" to="/">
+          <Link className="navbar-button" to="/search">
             <img src="/icons/search.svg" alt="Search" />
-          </Link> */}
+          </Link>
 
-          {/* {!isAuthenticated ? (
-            <Link className="navbar-button" to="/login">
-              <img src="/icons/account.svg" alt="Account Logged Out" />
-            </Link>
-          ) : (
-            <Link className="navbar-button" to="/profile">
-              <img src="/icons/account.svg" alt="Account Logged In" />
-            </Link>
-          )} */}
+          <Link className="navbar-button" to="/account">
+            <img src="/icons/account.svg" alt="Account" />
+          </Link>
 
           <button className="navbar-button" onClick={() => handleOpenBag()}>
             <img src="/icons/bag.svg" alt="Bag" />
@@ -168,18 +162,17 @@ const Navbar = () => {
               <NavLink to="/shop" className={navLinkClass}>
                 Discover
               </NavLink>
-              {/* <Link to="/search">Search</Link> */}
+              <Link to="/search">Search</Link>
 
               <button to="/bag" onClick={() => handleOpenBag()}>
                 Bag
                 {!totalQuantity ? '' : `(${totalQuantity})`}
               </button>
-
-              {/* {!isAuthenticated ? (
-                <Link to="/login">Login / Register</Link>
+              {!isAuthenticated ? (
+                <Link to="/account">Login / Register</Link>
               ) : (
-                <Link to="/profile">Profile</Link>
-              )} */}
+                <Link to="/account">Profile</Link>
+              )}
 
               <button to="/contact" onClick={() => handleOpenContact()}>
                 Contact

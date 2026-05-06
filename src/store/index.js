@@ -32,7 +32,65 @@ const saveCartState = (cart) => {
   }
 }
 
+const AUTH_STORAGE_KEY = 'onpath:auth'
+
+const loadAuthState = () => {
+  if (typeof window === 'undefined') return undefined
+  try {
+    const raw = window.localStorage.getItem(AUTH_STORAGE_KEY)
+    if (!raw) return undefined
+    const data = JSON.parse(raw)
+    if (!data?.customerAccessToken || !data?.user) return undefined
+    if (data.tokenExpiresAt && Date.now() > data.tokenExpiresAt) {
+      window.localStorage.removeItem(AUTH_STORAGE_KEY)
+      return undefined
+    }
+    return {
+      user: data.user,
+      isAuthenticated: true,
+      customerAccessToken: data.customerAccessToken,
+      idToken: data.idToken ?? null,
+      tokenExpiresAt: data.tokenExpiresAt ?? null,
+      loading: false,
+      error: null,
+    }
+  } catch {
+    return undefined
+  }
+}
+
+const saveAuthState = (auth) => {
+  if (typeof window === 'undefined') return
+  try {
+    if (
+      auth.isAuthenticated &&
+      auth.customerAccessToken &&
+      auth.user
+    ) {
+      window.localStorage.setItem(
+        AUTH_STORAGE_KEY,
+        JSON.stringify({
+          user: auth.user,
+          customerAccessToken: auth.customerAccessToken,
+          idToken: auth.idToken,
+          tokenExpiresAt: auth.tokenExpiresAt,
+        })
+      )
+    } else {
+      window.localStorage.removeItem(AUTH_STORAGE_KEY)
+    }
+  } catch {
+    /* ignore */
+  }
+}
+
 const preloadedCart = loadCartState()
+const preloadedAuthSlice = loadAuthState()
+
+const preloadedState = {
+  ...(preloadedCart ? { cart: preloadedCart } : {}),
+  ...(preloadedAuthSlice ? { auth: preloadedAuthSlice } : {}),
+}
 
 export const store = configureStore({
   reducer: {
@@ -41,7 +99,8 @@ export const store = configureStore({
     products: productReducer,
     blog: blogReducer,
   },
-  preloadedState: preloadedCart ? { cart: preloadedCart } : undefined,
+  preloadedState:
+    Object.keys(preloadedState).length > 0 ? preloadedState : undefined,
 })
 
 let lastCart = store.getState().cart
@@ -51,6 +110,14 @@ store.subscribe(() => {
     lastCart = currentCart
     saveCartState(currentCart)
   }
+})
+
+let lastAuth = store.getState().auth
+store.subscribe(() => {
+  const currentAuth = store.getState().auth
+  if (currentAuth === lastAuth) return
+  lastAuth = currentAuth
+  saveAuthState(currentAuth)
 })
 
 export default store

@@ -194,6 +194,50 @@
     .contact-select {
       margin-bottom: 0;
     }
+    &-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: space-between;
+      align-items: flex-end;
+      button {
+        width: max-content;
+        margin: 0;
+        padding: 12px 0;
+      }
+    }
+    &-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      line-height: 1.4;
+      cursor: pointer;
+      color: #8f8f8f;
+      transition: $transition-base;
+
+      .icon {
+        width: 12px;
+        height: 12px;
+        border: 1px solid #8f8f8f;
+        // border-radius: 4px;
+        transition: $transition-base;
+      }
+      &:hover {
+        color: $black;
+        .icon {
+          border-color: $black;
+        }
+      }
+      input {
+        display: none;
+      }
+      input:checked ~ .icon {
+        background-color: $black;
+      }
+      input:checked ~ .text {
+        color: $black;
+      }
+    }
   }
   &-select {
     position: relative;
@@ -371,6 +415,14 @@
       margin-bottom: 16px;
       &-error {
         font-size: 12px;
+      }
+      &-buttons {
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 32px;
+        .btn {
+          margin-left: auto;
+        }
       }
     }
     &-select {

@@ -9,6 +9,7 @@
 @use 'components/buttons';
 @use 'components/cards';
 @use 'components/subscription';
+@use 'components/loader';
 
 // Layouts
 @use 'layouts/navbar';
@@ -23,7 +24,8 @@
 @use 'pages/product';
 @use 'pages/blog';
 @use 'pages/article';
-@use 'pages/login';
+@use 'pages/account';
+@use 'pages/account-dashboard';
 @use 'pages/notfound';
 
 // Animations
