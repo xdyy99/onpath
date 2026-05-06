@@ -13,6 +13,9 @@ dist-ssr
 *.local
 .wrangler
 
+# Ignore all files in the backup directory
+backup
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
