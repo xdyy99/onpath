@@ -186,8 +186,12 @@
     &-image {
       transition: $transition-base;
       transform-origin: bottom;
+      aspect-ratio: 448 / 600;
+
       img {
         width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
     }
     &-text {
@@ -326,8 +330,11 @@
   &-image {
     width: 723px;
     max-width: calc(100% / 3);
+    aspect-ratio: 600 / 800;
     img {
       width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     &:nth-child(1) {
       z-index: 1;
